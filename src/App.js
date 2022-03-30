@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {useInput} from "react-hanger";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/*
+    Biblioteka react-hanger dostarcza bardzo dużo niesamowitych hooks.
+    Przykładowo hook useInput pozwala bardzo prosto zarządzać stanem
+    pola tekstowego <input/>.
+
+    Więcej ciekawych hooks poznasz na moim szkoleniu Web Developer :)
+    Odwiedź km-programs.pl
+*/
+
+export default function App() {
+    const input = useInput('');
+    return (
+        <div className="container my-5">
+            <div className="input-group">
+                <span className="input-group-text">Username</span>
+                <input
+                    type="text"
+                    aria-label="First name"
+                    value={input.value}
+                    onChange={input.onChange}
+                />
+            </div>
+            <div className="alert alert-success my-4" role="alert">
+                <p>{input.value}</p>
+            </div>
+        </div>
+    );
 }
-
-export default App;
